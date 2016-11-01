@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller("piratesController", ['$scope', function($scope) {
+app.controller("PiratesController", ['$scope', function($scope) {
   console.log("controller is firing");
     $scope.message = "Welcome!"
 
