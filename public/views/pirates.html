@@ -1,1 +1,38 @@
-<h1> Pirates </h1>
+<button ng-click="showPirateForm = !showPirateForm" type="button" class="btn btn-default">ADD A PIRATE</button>
+<br>
+
+<form ng-show="showPirateForm" name="newPirate">
+
+    <div class="form-group" ng-class="{'has-error' : newPirate.first_name.$invalid && !newPirate.first_name.$pristine,'has-success' : newPirate.first_name.$valid }">
+        <label class="control-label" for="first_name">First Name:</label>
+        <input type="text" name="first_name" class="form-control" ng-model="pirate.data.first_name" ng-minlength="2" ng-maxlength="200" ng-required="true" placeholder="First Name">
+        <small ng-show="newPirate.first_name.$error.minlength" class="help-block">Name is too short.</small>
+        <small ng-show="newPirate.first_name.$error.maxlength" class="help-block">Name is too long.</small>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error' : newPirate.last_name.$invalid && !newPirate.last_name.$pristine,'has-success' : newPirate.last_name.$valid }">
+        <label class="control-label" for="last_name">Last Name:</label>
+        <input type="text" name="status" class="form-control" ng-model="pirate.data.last_name" ng-minlength="2" ng-maxlength="20" ng-required="true" placeholder="Last Name">
+        <small ng-show="newPirate.last_name.$error.minlength" class="help-block">Name is too short.</small>
+        <small ng-show="newPirate.last_name.$error.maxlength" class="help-block">Name is too long.</small>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error' : newPirate.image_url.$invalid && !newPirate.image_url.$pristine,'has-success' : newPirate.image_url.$valid }">
+    <label class="control-label" for="image_url">Image URL:</label>
+    <input type="url" name="image" class="form-control" ng-model="pirate.data.image_url" ng-required="true" placeholder="Image URL">
+    <small ng-show="newPirate.image_url.$invalid && !newPirate.image_url.$pristine" class="help-block">URL is invalid.</small>
+    </div>
+
+    <button class="btn btn-default" ng-disabled="newPirateForm.$invalid" ng-click="showPirateForm=false; submitPirate(newPirate.$valid)">Submit</button>
+</form>
+
+<div class="media well" ng-repeat="pirate in view.pirates">
+    <div class="media-left media-middle">
+        <a href="#">
+            <img class="media-object" ng-src="{{pirate.image_url}}" alt="pirate image">
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{pirate.first_name}} {{pirate.last_name}}
+    </div>
+</div>
