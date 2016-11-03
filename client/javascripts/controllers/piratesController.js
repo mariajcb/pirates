@@ -1,11 +1,9 @@
-'use strict'
+`use strict`
 
-app.controller("PiratesController", ['$scope', 'PiratesService', function($scope, PiratesService) {
-  console.log("controller is firing");
+app.controller(`PiratesController`, [`$scope`, `PiratesService`, function($scope, PiratesService) {
     $scope.view = {};
     PiratesService.all()
       .then(pirates => {
-        console.log(pirates);
         $scope.view.pirates = pirates.data
       })
 

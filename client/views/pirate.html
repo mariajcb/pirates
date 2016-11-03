@@ -1,0 +1,40 @@
+<div class="media well">
+    <div class="media-left media-middle">
+        <a href="#">
+            <img class="media-object" ng-src="{{pirate.image_url}}" alt="pirate image">
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{pirate.first_name}} {{pirate.last_name}}
+    </div>
+    <div class="pull-right">
+      <a href="" ng-click="showEditForm = !showEditForm">EDIT</a>
+      <a href="" ng-click="deletePirate(pirate)">DELETE</a>
+    </div>
+
+<form ng-show="showEditForm" name="editPirate">
+
+  <div class="form-group" ng-class="{'has-error' : pirate.first_name.$invalid && !pirate.first_name.$pristine,'has-success' : pirate.first_name.$valid }">
+      <label class="control-label" for="first_name">First Name:</label>
+      <input type="text" name="first_name" value="{{pirate.first_name}}" class="form-control" ng-model="pirate.first_name" ng-minlength="2" ng-maxlength="200" ng-required="true" >
+      <small ng-show="pirate.first_name.$error.minlength" class="help-block">Name is too short.</small>
+      <small ng-show="pirate.first_name.$error.maxlength" class="help-block">Name is too long.</small>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error' : pirate.last_name.$invalid && !pirate.data.last_name.$pristine,'has-success' : pirate.last_name.$valid }">
+      <label class="control-label" for="last_name">Last Name:</label>
+      <input type="text" name="status" class="form-control" ng-model="pirate.data.last_name" ng-minlength="2" ng-maxlength="20" ng-required="true" placeholder="Last Name">
+      <small ng-show="pirate.last_name.$error.minlength" class="help-block">Name is too short.</small>
+      <small ng-show="pirate.last_name.$error.maxlength" class="help-block">Name is too long.</small>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error' : pirate.image_url.$invalid && !pirate.image_url.$pristine,'has-success' : pirate.image_url.$valid }">
+  <label class="control-label" for="image_url">Image URL:</label>
+  <input type="url" name="image" class="form-control" ng-model="pirate.data.image_url" ng-required="true" placeholder="Image URL">
+  <small ng-show="pirate.image_url.$invalid && !pirate.image_url.$pristine" class="help-block">URL is invalid.</small>
+  </div>
+
+  <button class="btn btn-default" ng-disabled="editPirate.$invalid" ng-click="showEditForm=false; submitEditPirate(editPirate.$valid)">Save Changes</button>
+  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</form>
+</div>
