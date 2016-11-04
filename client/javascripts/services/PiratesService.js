@@ -10,10 +10,13 @@ app.factory(`PiratesService`, [`$http`, function ($http) {
     one: function(id) {
       console.log(`GETTING ONE PIRATE`);
       return $http.get(`/api/pirates/${id}`)
+    },
+    putOne: function(editedPirate) {
+      let id = editedPirate.id
+      return $http.put(`/api/pirates/${id}`, editedPirate)
+    },
+    deleteOne: function(id) {
+      return $http.delete(`/api/pirates/${id}`)
     }
-    // delete: function(id) {
-    //   console.log(`DELETE PIRATE SERVICE`, id);
-    //   return $http.delete(`/api/pirates/${id}`)
-    // }
   }
 }])

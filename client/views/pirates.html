@@ -28,7 +28,7 @@
 
 <div class="media well" ng-repeat="pirate in view.pirates">
     <div class="media-left media-middle">
-        <a href="#">
+        <a href=`#/{{pirate.id}}`>
             <img class="media-object" ng-src="{{pirate.image_url}}" alt="pirate image">
         </a>
     </div>

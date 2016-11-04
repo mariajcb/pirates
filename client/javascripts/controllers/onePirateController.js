@@ -9,13 +9,21 @@ app.controller(`onePirateController`, [`$scope`, `PiratesService`, `$routeParams
       $scope.pirate = onePirate.data
     })
 
-  // console.log(`delete controller is firing`);
-  //   $scope.deletePirate = function(pirate) {
-  //     const id = pirate.data
-  //     PiratesService.delete(id)
-  //     .then(function() {
-  //       $location.url(`/`)
-  //     })
-  //   }
+  $scope.submitEditPirate = function(pirate) {
+      const editedPirate = $scope.pirate
+      PiratesService.putOne(editedPirate)
+      .then(function() {
+        $location.url('/')
+      })
+  }
+
+    $scope.deletePirate = function(pirate) {
+      console.log(`delete controller is firing`);
+      const id = pirate.id
+      PiratesService.deleteOne(id)
+      .then(function() {
+        $location.url(`/`)
+      })
+    }
 
 }])

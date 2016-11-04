@@ -1,6 +1,6 @@
 <div class="media well">
     <div class="media-left media-middle">
-        <a href="#">
+        <a href=`#`>
             <img class="media-object" ng-src="{{pirate.image_url}}" alt="pirate image">
         </a>
     </div>
@@ -23,14 +23,14 @@
 
   <div class="form-group" ng-class="{'has-error' : pirate.last_name.$invalid && !pirate.data.last_name.$pristine,'has-success' : pirate.last_name.$valid }">
       <label class="control-label" for="last_name">Last Name:</label>
-      <input type="text" name="status" class="form-control" ng-model="pirate.data.last_name" ng-minlength="2" ng-maxlength="20" ng-required="true" placeholder="Last Name">
+      <input type="text" name="last_name" value="{{pirate.last_name}}" class="form-control" ng-model="pirate.last_name" ng-minlength="2" ng-maxlength="20" ng-required="true">
       <small ng-show="pirate.last_name.$error.minlength" class="help-block">Name is too short.</small>
       <small ng-show="pirate.last_name.$error.maxlength" class="help-block">Name is too long.</small>
   </div>
 
   <div class="form-group" ng-class="{'has-error' : pirate.image_url.$invalid && !pirate.image_url.$pristine,'has-success' : pirate.image_url.$valid }">
   <label class="control-label" for="image_url">Image URL:</label>
-  <input type="url" name="image" class="form-control" ng-model="pirate.data.image_url" ng-required="true" placeholder="Image URL">
+  <input type="url" name="image" class="form-control" ng-model="pirate.image_url" ng-required="true" placeholder="Image URL">
   <small ng-show="pirate.image_url.$invalid && !pirate.image_url.$pristine" class="help-block">URL is invalid.</small>
   </div>
 
